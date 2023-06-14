@@ -1,3 +1,6 @@
 [submodule "libraries/SFGUI"]
 	path = libraries/SFGUI
 	url = https://github.com/ChyzhTolik/SFGUI_FORK.git
+[submodule "libraries/SFML"]
+	path = libraries/SFML
+	url = https://github.com/ChyzhTolik/SFML-FORK.git
