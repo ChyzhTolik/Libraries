@@ -6,3 +6,4 @@ project(Libraries)
 
 add_subdirectory(libraries/SFML)
 add_subdirectory(libraries/SFGUI)
+add_subdirectory(libraries/box2d)

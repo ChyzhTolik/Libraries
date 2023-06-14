@@ -4,3 +4,6 @@
 [submodule "libraries/SFML"]
 	path = libraries/SFML
 	url = https://github.com/ChyzhTolik/SFML-FORK.git
+[submodule "libraries/box2d"]
+	path = libraries/box2d
+	url = https://github.com/ChyzhTolik/box2d-FORK.git
