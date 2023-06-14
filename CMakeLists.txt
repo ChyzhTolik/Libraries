@@ -4,11 +4,29 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(Libraries)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp "Testing.cpp")
 
 add_subdirectory(libraries/SFML)
 add_subdirectory(libraries/SFGUI)
 add_subdirectory(libraries/box2d)
+
+
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    libraries/box2d/include
+    libraries/SFGUI/include
+    libraries/SFML/include
+)
+
+if(WIN32)
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        ${CMAKE_SOURCE_DIR}/built_libraries/Windows/sfml-graphics-d.lib
+        ${CMAKE_SOURCE_DIR}/built_libraries/Windows/sfml-window-d.lib
+        ${CMAKE_SOURCE_DIR}/built_libraries/Windows/sfml-system-d.lib
+        ${CMAKE_SOURCE_DIR}/built_libraries/Windows/sfml-audio-d.lib
+
+        ${CMAKE_SOURCE_DIR}/built_libraries/Windows/SFGUI-d.lib
+    )
+endif(WIN32)
 
 if(UNIX)
 add_custom_command(
@@ -49,5 +67,21 @@ if(WIN32)
             ${CMAKE_BINARY_DIR}/libraries/SFGUI/lib/SFGUI-d.lib
 
             ${CMAKE_SOURCE_DIR}/built_libraries/Windows
+    )
+
+    add_custom_command(
+    TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-audio-d-3.dll
+            ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-graphics-d-3.dll
+            ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-network-d-3.dll
+            ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-system-d-3.dll
+            ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-window-d-3.dll
+
+            ${CMAKE_BINARY_DIR}/libraries/box2d/bin/box2d.dll
+
+            ${CMAKE_BINARY_DIR}/libraries/SFGUI/lib/SFGUI-d.dll
+
+            ${CMAKE_BINARY_DIR}/
     )
 endif(WIN32)
