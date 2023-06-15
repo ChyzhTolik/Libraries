@@ -17,6 +17,19 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     libraries/SFML/include
 )
 
+if(UNIX)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    ${CMAKE_SOURCE_DIR}/built_libraries/UNIX/libsfml-audio-d.so.3.0.0
+    ${CMAKE_SOURCE_DIR}/built_libraries/UNIX/libsfml-window-d.so.3.0.0
+    ${CMAKE_SOURCE_DIR}/built_libraries/UNIX/libsfml-system-d.so.3.0.0
+    ${CMAKE_SOURCE_DIR}/built_libraries/UNIX/libsfml-graphics-d.so.3.0.0
+
+    ${CMAKE_SOURCE_DIR}/built_libraries/UNIX/libSFGUI-d.so
+
+    ${CMAKE_SOURCE_DIR}/built_libraries/UNIX/libbox2d.so.2.4.1
+)
+endif(UNIX)
+
 if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE
         ${CMAKE_SOURCE_DIR}/built_libraries/Windows/sfml-graphics-d.lib
@@ -37,11 +50,22 @@ add_custom_command(
             ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-system-d.so.3.0.0
             ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-graphics-d.so.3.0.0
             ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-network-d.so.3.0.0
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-audio-d.so.3.0
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-window-d.so.3.0
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-system-d.so.3.0
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-graphics-d.so.3.0
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-audio-d.so
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-window-d.so
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-system-d.so
+            ${CMAKE_BINARY_DIR}/libraries/SFML/lib/libsfml-graphics-d.so
             ${CMAKE_BINARY_DIR}/libraries/SFGUI/lib/libSFGUI-d.so
             ${CMAKE_BINARY_DIR}/libraries/box2d/bin/libbox2d.so.2.4.1
+            ${CMAKE_BINARY_DIR}/libraries/box2d/bin/libbox2d.so.2
+            ${CMAKE_BINARY_DIR}/libraries/box2d/bin/libbox2d.so
 
             ${CMAKE_SOURCE_DIR}/built_libraries/UNIX
 )
+
 endif(UNIX)
 
 if(WIN32)
