@@ -109,3 +109,7 @@ if(WIN32)
             ${CMAKE_BINARY_DIR}/
     )
 endif(WIN32)
+
+file(COPY ${CMAKE_SOURCE_DIR}/libraries/SFML/include/ DESTINATION ${CMAKE_SOURCE_DIR}/built_libraries/include)
+file(COPY ${CMAKE_SOURCE_DIR}/libraries/SFGUI/include/ DESTINATION ${CMAKE_SOURCE_DIR}/built_libraries/include)
+file(COPY ${CMAKE_SOURCE_DIR}/libraries/box2d/include/ DESTINATION ${CMAKE_SOURCE_DIR}/built_libraries/include)
