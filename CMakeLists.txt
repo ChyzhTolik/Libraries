@@ -38,6 +38,8 @@ if(WIN32)
         ${CMAKE_SOURCE_DIR}/built_libraries/Windows/sfml-audio-d.lib
 
         ${CMAKE_SOURCE_DIR}/built_libraries/Windows/SFGUI-d.lib
+
+        ${CMAKE_SOURCE_DIR}/built_libraries/Windows/box2d.lib
     )
 endif(WIN32)
 
