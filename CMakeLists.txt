@@ -74,6 +74,8 @@ if(WIN32)
     add_custom_command(
     TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_SOURCE_DIR}/libraries/SFML/extlibs/bin/x64/openal32.dll
+
             ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-audio-d-3.dll
             ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-graphics-d-3.dll
             ${CMAKE_BINARY_DIR}/libraries/SFML/bin/sfml-network-d-3.dll
